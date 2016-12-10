@@ -1,4 +1,10 @@
-#define  _XOPEN_SOURCE
+#if __STDC_VERSION__ >= 199901L
+#define  _XOPEN_SOURCE    600
+#else
+#define  _XOPEN_SOURCE    700
+#endif /* __STDC_VERSION__ */
+
+#include "commons.h"
 
 #include <stdio.h>
 #include <unistd.h>
@@ -59,8 +65,6 @@ int main(int argc, char *argv[])
 	struct sigaction sa;
 	struct itimerval tv;
 
-	unsigned int user_alarm = 0;
-
 	if (setup_sig_handler(&sa))
 		return -1;
 
@@ -69,11 +73,27 @@ int main(int argc, char *argv[])
 
 	g_running = 1;
 
+	unsigned int user_alarm = 0;
+	struct timespec previous;
+	struct timespec current;
+	struct timespec difference;
+
+	clock_gettime(CLOCK_MONOTONIC, &previous);
+
 	while (g_running) {
 		pause();
 
 		while (g_sig_alarm != user_alarm) {
 			user_alarm++;
+
+			clock_gettime(CLOCK_MONOTONIC, &current);
+			timespec_diff(&previous, &current, &difference);
+
+			if (difference.tv_nsec > 2000000)
+				printf("%u\n", difference.tv_nsec / 1000);
+
+			previous.tv_sec = current.tv_sec;
+			previous.tv_nsec = current.tv_nsec;
 		}
 	}
 
