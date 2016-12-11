@@ -1,3 +1,11 @@
+/*
+ * common.h
+ *
+ * Collection of functions to use in different timing programs.
+ *
+ * 2016-12-11 Frank Jeschke <frank@fjes.de>
+ */
+
 
 #ifndef _COMMONS_H
 #define _COMMONS_H
