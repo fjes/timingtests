@@ -54,6 +54,11 @@ static int setup_sig_handler(struct sigaction *sa)
 		return -1;
 	}
 
+	if (sigaction(SIGINT, sa, 0)) {
+		fprintf(stderr, "Error setup signal handler\n");
+		return -1;
+	}
+
 	return 0;
 }
 
