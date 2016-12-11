@@ -121,5 +121,10 @@ int main(int argc, char *argv[])
 	clock_t end = clock();
 	double runtime = (double)(end - start) / CLOCKS_PER_SEC;
 
+	printf("Summary:\n");
+	printf("Processortime: %f s\n", runtime);
+	printf("mean: %f ns; min: %f ns; max: %f ns\n", mean, min, max);
+	printf(" on %u iterations with %u values larger %d ns\n", mean_count, values_miss, MaxDifference);
+
 	return 0;
 }
