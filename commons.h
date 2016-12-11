@@ -2,6 +2,7 @@
 #ifndef _COMMONS_H
 #define _COMMONS_H
 
+#include <stddef.h>
 #include <sys/time.h>
 
 void timespec_diff(struct timespec *start,
@@ -17,6 +18,22 @@ void timespec_diff(struct timespec *start,
     }
 
     return;
+}
+
+/*
+ * Calculate the mean for every new value so the current mean is always up to
+ * date.
+ *
+ * @param mean     to current mean value
+ * @param current  the current measurement
+ * @param count    count of this value (starts with 0)
+ * @return the new mean value
+ */
+
+double calc_mean(double mean, double current, size_t count)
+{
+	double K = 1.0 / (count + 1);
+	return (mean + K * (current - mean));
 }
 
 #endif /* _COMMONS_H */
