@@ -5,6 +5,13 @@
 #include <stddef.h>
 #include <sys/time.h>
 
+/*
+ * Calculate the difference between start and end timespec with respect of
+ * the seconds advance.
+ *
+ * This function originates from the gist:
+ * https://gist.github.com/diabloneo/9619917:w
+ */
 void timespec_diff(struct timespec *start,
 		   struct timespec *stop,
                    struct timespec *result)
