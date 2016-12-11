@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
 		return -1;
 
 	g_running = 1;
+	clock_t start = clock();
 
 	unsigned int user_alarm = 0;
 	struct timespec previous;
@@ -116,6 +117,9 @@ int main(int argc, char *argv[])
 			previous.tv_nsec = current.tv_nsec;
 		}
 	}
+
+	clock_t end = clock();
+	double runtime = (double)(end - start) / CLOCKS_PER_SEC;
 
 	return 0;
 }
