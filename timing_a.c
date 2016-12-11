@@ -83,6 +83,13 @@ int main(int argc, char *argv[])
 	struct timespec current;
 	struct timespec difference;
 
+	double mean = 0;  /* mean value in nanoseconds (ns) */
+	size_t mean_count = 0;
+	double max = 0, min = 1000000000;
+
+	const size_t MaxDifference = 1500000;
+	size_t values_miss = 0;
+
 	clock_gettime(CLOCK_MONOTONIC, &previous);
 
 	while (g_running) {
@@ -94,8 +101,16 @@ int main(int argc, char *argv[])
 			clock_gettime(CLOCK_MONOTONIC, &current);
 			timespec_diff(&previous, &current, &difference);
 
-			if (difference.tv_nsec > 2000000)
-				printf("%u\n", difference.tv_nsec / 1000);
+			double cur = (double)difference.tv_nsec;
+			mean = calc_mean(mean, cur, mean_count++);
+
+			max = (cur > max) ?  cur : max;
+			min = (cur < min) ?  cur : min;
+
+			if (difference.tv_nsec > MaxDifference) {
+				printf("%u: %u\n", user_alarm, difference.tv_nsec / 1000);
+				values_miss++;
+			}
 
 			previous.tv_sec = current.tv_sec;
 			previous.tv_nsec = current.tv_nsec;
