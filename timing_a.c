@@ -1,3 +1,11 @@
+/*
+ * timing_a.c
+ *
+ * Timing the process with SIGALRM and itmer.
+ *
+ * 2016-12-11 Frank Jeschke <frank@fjes.de>
+ */
+
 #if __STDC_VERSION__ >= 199901L
 #define  _XOPEN_SOURCE    600
 #else
