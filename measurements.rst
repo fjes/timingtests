@@ -37,6 +37,13 @@ Necessary information:
 System: firefly
 ---------------
 
+GCC Verssion: (`gcc --version`)::
+
+  gcc (Debian 4.7.2-5) 4.7.2
+  Copyright (C) 2012 Free Software Foundation, Inc.
+  This is free software; see the source for copying conditions.  There is NO
+  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 Operating System (`/proc/version`)::
 
   Linux version 3.2.0-4-686-pae (debian-kernel@lists.debian.org) (gcc version 4.6.3 (Debian 4.6.3-14) ) #1 SMP Debian 3.2.82-1
