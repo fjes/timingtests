@@ -14,6 +14,7 @@ See below `System: firefly`_.
 Result
 """"""
 ::
+
   Processortime: 308.910000 s
   mean: 1000004.884075 ns; min: 23065.000000 ns; max: 4921897.000000 ns
    on 20068722 iterations with 433 values larger 1500000 ns
@@ -28,6 +29,7 @@ System: firefly
 ---------------
 
 Operating System (`/proc/version`)::
+
   Linux version 3.2.0-4-686-pae (debian-kernel@lists.debian.org) (gcc version 4.6.3 (Debian 4.6.3-14) ) #1 SMP Debian 3.2.82-1
 
 CPU (`/proc/cpuinfo`)::
