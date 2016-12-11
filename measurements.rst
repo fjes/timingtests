@@ -25,6 +25,15 @@ This makes a error rate of 0.002158
 Appendix
 ========
 
+System Information
+------------------
+
+Necessary information:
+
+- GCC Version
+- Kernel Version (`/proc/version`)
+- CPU Info (`/proc/cpuinfo`)
+
 System: firefly
 ---------------
 
