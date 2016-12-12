@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 			min = (cur < min) ?  cur : min;
 
 			if (difference.tv_nsec > MaxDifference) {
-				printf("%u: %u\n", user_alarm, difference.tv_nsec / 1000);
+//				printf("%u: %u\n", user_alarm, difference.tv_nsec / 1000);
 				values_miss++;
 			}
 
